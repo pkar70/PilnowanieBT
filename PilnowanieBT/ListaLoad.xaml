@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="PilnowanieBT.ListaLoad"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PilnowanieBT"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="uiPage_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Wczytywanie list"  x:Uid="resListsTitle" FontSize="18" HorizontalAlignment="Center" Margin="10,10,10,10" />
+        <Button Content="Ok" Grid.Row="2" HorizontalAlignment="Center" Click="uiOk_Click" />
+
+        <ListView Grid.Row="1" x:Name="ListaItems" Margin="5,5,5,5" HorizontalContentAlignment="Stretch"  >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"  Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" Margin="0,5,0,0"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding sFileName, Mode=OneWay }" />
+                        <CheckBox Grid.Row="0" Grid.Column="2" IsChecked="{Binding bSelected, Mode=TwoWay}"   />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
